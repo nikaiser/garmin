@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/Users/beacon/garmin/garmin/bin python3
 
 from garminconnect import (
     Garmin,
