@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
+#!/usr/bin/env python3
 from garminconnect import Garmin
+from influxdb_client import InfluxDBClient, Point, WritePrecision
+from influxdb_client.client.write_api import SYNCHRONOUS
 from datetime import datetime, date, timedelta
 import pytz
 import json
