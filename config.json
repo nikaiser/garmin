@@ -1,0 +1,64 @@
+{
+    "garmin_auth": {
+        "token_store": "/home/xubuntu/garmin"
+    },
+    "influxdb": {
+        "url": "http://2009-MacbookPro:8086",
+        "token": "${INFLUXDB_TOKEN}",
+        "org": "home net",
+        "bucket": "garmin"
+    },
+    "log_file": "/tmp/garmin_script_run.log",
+    "last_fetch_file": "/home/xubuntu/garmin/last_fetch_date.txt",
+    "start_date": "2023-09-01",
+    "garmin_timestamp_format": "%Y-%m-%d %H:%M:%S",
+    "timezone": "America/New_York",
+    "date_range": {
+        "start_days_ago": 150
+    },
+    "measurements": {
+        "activity": [
+            "distance",
+            "duration",
+            "averageSpeed",
+            "maxSpeed",
+            "averageHR",
+            "maxHR",
+            "averageRunningCadenceInStepsPerMinute",
+            "steps",
+            "avgStrideLength",
+            "calories",
+            "elevationGain",
+            "elevationLoss",
+            "averagePace",
+            "activeKilocalories",
+            "deviceName",
+            "startLatitude",
+            "startLongitude",
+            "activityType"
+        ],
+        "sleep": [
+            "deepSleepDuration",
+            "lightSleepDuration",
+            "remSleepDuration",
+            "awakeDuration",
+            "sleepStartTimestamp",
+            "sleepEndTimestamp",
+            "sleepQualityType",
+            "averageRespiration",
+            "lowestRespiration",
+            "highestRespiration",
+            "awakeCount",
+            "avgSleepStress",
+            "sleepScoreFeedback",
+            "sleepScoreQualityDuration"
+        ],
+        "heart_rate": [
+            "heartRate"
+        ],
+        "spo2": [
+            "spo2Reading",
+            "readingConfidence"
+        ]
+    }
+}
