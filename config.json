@@ -4,8 +4,8 @@
     },
     "influxdb": {
         "url": "http://2009-MacbookPro:8086",
-        "token": "${INFLUXDB_TOKEN}",
-        "org": "home net",
+        "token": "PTyMot8jGHWpMZkVraXS04iCjvR8yjsv-SVQV5POded7I700b0YrV1sJHLvY_qUF48aUYRYwVWcAPtr3hCsRDw==",
+        "org": "homenet",
         "bucket": "garmin"
     },
     "log_file": "/tmp/garmin_script_run.log",

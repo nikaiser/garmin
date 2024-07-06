@@ -36,7 +36,7 @@ def init_garmin(config):
 config = load_config()
 garmin_client = init_garmin(config)
 
-influxdb_token = os.environ.get('INFLUXDB_TOKEN')
+influxdb_token = os.environ.get('INFLUX_TOKEN')
 if not influxdb_token:
     raise ValueError("INFLUXDB_TOKEN environment variable is not set")
 
