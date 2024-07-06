@@ -9,6 +9,7 @@ import os
 import time
 import logging
 
+
 # Load configuration
 def load_config():
     with open('config.json', 'r') as f:
@@ -16,16 +17,22 @@ def load_config():
 
 config = load_config()
 
+# Initialize Garmin client
+garmin_client = init_garmin(config['garmin_auth']['token_store'])
+if garmin_client is None:
+    logging.error("Failed to initialize Garmin client. Exiting.")
+    exit(1)
+
 # Configure logging
 logging.basicConfig(filename=config['log_file'], level=logging.DEBUG, format='%(asctime)s %(message)s')
 logging.info("Script started.")
 
 TIMEZONE = pytz.timezone(config['timezone'])
 
-def init_garmin(config):
+def init_garmin(token_store):
     try:
         garmin_client = Garmin()
-        garmin_client.login(tokenstore=config['garmin_auth']['token_store'])
+        garmin_client.login(token_store)  # Use the login method with the token directory
         logging.info("Successfully connected to Garmin using tokens")
         return garmin_client
     except Exception as err:
