@@ -12,8 +12,8 @@ logging.info("Script started.")
 
 # Path to the directory where your OAuth tokens are stored
 token_store = '/home/xubuntu/garmin'  # Update this to the path of your token directory
-start_date = date(2023, 9, 1)
-end_date = date(2023, 9, 5)  # Reduced date range for testing
+start_date = date(2024, 5, 1)
+end_date = date(2024, 5, 30)  # Reduced date range for testing
 garmin_timestamp_format = "%Y-%m-%d %H:%M:%S"
 influxdb_time_format = "%Y-%m-%dT%H:%M:%SZ"
 
