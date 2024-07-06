@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 from garminconnect import Garmin
-from influxdb_client import InfluxDBClient, Point, WritePrecision
-from influxdb_client.client.write_api import SYNCHRONOUS
 from datetime import datetime, date, timedelta
 import pytz
 import json
@@ -9,26 +7,12 @@ import os
 import time
 import logging
 
-
 # Load configuration
 def load_config():
     with open('config.json', 'r') as f:
         return json.load(f)
 
-config = load_config()
-
 # Initialize Garmin client
-garmin_client = init_garmin(config['garmin_auth']['token_store'])
-if garmin_client is None:
-    logging.error("Failed to initialize Garmin client. Exiting.")
-    exit(1)
-
-# Configure logging
-logging.basicConfig(filename=config['log_file'], level=logging.DEBUG, format='%(asctime)s %(message)s')
-logging.info("Script started.")
-
-TIMEZONE = pytz.timezone(config['timezone'])
-
 def init_garmin(token_store):
     try:
         garmin_client = Garmin()
@@ -39,10 +23,19 @@ def init_garmin(token_store):
         logging.error(f"Error connecting to Garmin using token: {err}")
         return None
 
-# When using the config
+# Load configuration
 config = load_config()
-garmin_client = init_garmin(config)
 
+# Configure logging
+logging.basicConfig(filename=config['log_file'], level=logging.DEBUG, format='%(asctime)s %(message)s')
+logging.info("Script started.")
+
+# Initialize Garmin client
+garmin_client = init_garmin(config['garmin_auth']['token_store'])
+if garmin_client is None:
+    logging.error("Failed to initialize Garmin client. Exiting.")
+    exit(1)
+    
 influxdb_token = os.environ.get('INFLUX_TOKEN')
 if not influxdb_token:
     raise ValueError("INFLUXDB_TOKEN environment variable is not set")
